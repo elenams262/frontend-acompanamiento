@@ -1,0 +1,337 @@
+<section
+  class="hero-section"
+  style="
+    position: relative;
+    color: white;
+    padding: 6rem 1rem;
+    text-align: center;
+    border-radius: 0 0 50% 50% / 4%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px; /* Asegura un alto mínimo para ver el video */
+  "
+>
+  <!-- Background Video -->
+  <video
+    autoplay
+    loop
+    muted
+    playsinline
+    style="
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: 0;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    "
+  >
+    <source src="assets/video-fondo-home.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Overlay for text readability using the new primary color approach -->
+  <div
+    style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(119, 150, 205, 0.7); /* Hex #7796cd con 70% opacidad */
+      z-index: 1;
+    "
+  ></div>
+
+  <div class="container" style="position: relative; z-index: 2">
+    <h1 style="font-size: 3rem; margin-bottom: 1rem; color: white">
+      Cuidado y Acompañamiento con Corazón
+    </h1>
+    <p
+      style="
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      "
+    >
+      Acompañamiento Sociosanitario consigue que la rutina de la persona y su familia se resienta lo
+      menos posible y, al mismo tiempo, garantizamos la cobertura total de las necesidades
+      asistenciales y sanitarias.
+    </p>
+    <a routerLink="/contacto" class="btn" style="background: var(--accent); color: var(--dark)"
+      >Contáctanos Hoy</a
+    >
+  </div>
+</section>
+
+<section
+  class="services-carousel-section"
+  style="
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  "
+>
+  <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary)">Nuestros Servicios</h2>
+
+  <div
+    class="carousel-container"
+    style="
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background: white;
+    "
+  >
+    <div
+      *ngFor="let service of services; let i = index"
+      class="carousel-slide"
+      [class.active]="i === currentSlide()"
+      style="display: none; width: 100%; transition: opacity 0.5s ease-in-out"
+    >
+      <div class="slide-content-wrapper" style="display: flex; flex-direction: column">
+        <!-- Image Part -->
+        <div
+          class="slide-image"
+          [style.backgroundImage]="'url(' + service.image + ')'"
+          style="height: 300px; background-size: cover; background-position: center; flex: 1"
+        ></div>
+
+        <!-- Text Part -->
+        <div
+          class="slide-text"
+          style="
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          "
+        >
+          <h3 style="color: var(--primary); font-size: 1.5rem; margin-bottom: 1rem">
+            {{ service.title }}
+          </h3>
+          <p style="color: #555; line-height: 1.6; margin-bottom: 1.5rem">
+            {{ service.description }}
+          </p>
+          <a
+            [routerLink]="service.link"
+            style="color: var(--primary); font-weight: bold; text-decoration: none"
+            >Saber más &rarr;</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Dots -->
+    <div
+      class="carousel-dots"
+      style="
+        position: absolute;
+        bottom: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+      "
+    >
+      <span
+        *ngFor="let service of services; let i = index"
+        (click)="setSlide(i)"
+        [style.background-color]="i === currentSlide() ? 'var(--primary)' : '#ccc'"
+        style="width: 10px; height: 10px; border-radius: 50%; cursor: pointer"
+      >
+      </span>
+    </div>
+  </div>
+</section>
+
+<section
+  class="durcal-promo-section"
+  style="
+    background: var(--white);
+    max-width: 1000px;
+    margin: 4rem auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  "
+>
+  <div style="display: flex; flex-wrap: wrap; align-items: stretch">
+    <!-- Image -->
+    <div style="flex: 1 1 300px">
+      <img
+        src="assets/reloj-durcal.avif"
+        alt="Reloj Durcal"
+        style="
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: left center;
+          min-height: 250px;
+        "
+      />
+    </div>
+
+    <!-- Content -->
+    <div
+      style="
+        flex: 1 1 300px;
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      "
+    >
+      <h2 style="color: var(--primary); font-size: 2rem; margin-bottom: 1rem; line-height: 1.2">
+        Reloj Durcal con 10% de descuento
+      </h2>
+      <p style="font-size: 1.2rem; color: #555; margin-bottom: 2rem">
+        Código:
+        <strong
+          style="
+            color: var(--primary);
+            background: rgba(119, 150, 205, 0.1);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+          "
+          >acompanamientosociosanitario</strong
+        >
+      </p>
+      <a
+        href="https://www.durcal.com/?promotion_code=ACOMPANAMIENTOSOCIOSANITARIO"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn"
+        style="
+          background: var(--accent);
+          color: var(--dark);
+          align-self: flex-start;
+          text-align: center;
+          font-size: 1.1rem;
+          padding: 0.8rem 2rem;
+        "
+      >
+        Comprar
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section" style="max-width: 1200px; margin: 5rem auto; padding: 0 1rem">
+  <div style="text-align: center; margin-bottom: 3.5rem">
+    <h2
+      style="
+        font-size: 2.5rem;
+        color: var(--primary);
+        font-family: var(--font-heading);
+        margin-bottom: 1rem;
+      "
+    >
+      Lo que dicen de nosotros
+    </h2>
+    <p style="font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto">
+      Experiencias reales de familias que han confiado en nuestro servicio de acompañamiento.
+    </p>
+  </div>
+
+  <div
+    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem"
+  >
+    <div
+      *ngFor="let testimonial of testimonials"
+      style="
+        background: var(--white);
+        padding: 2.5rem 2rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        border-top: 4px solid var(--primary-light);
+      "
+      onmouseover="
+        this.style.transform = 'translateY(-5px)';
+        this.style.boxShadow = '0 20px 40px -10px rgba(0, 0, 0, 0.15)';
+      "
+      onmouseout="
+        this.style.transform = 'none';
+        this.style.boxShadow = '0 10px 30px -10px rgba(0, 0, 0, 0.1)';
+      "
+    >
+      <div style="margin-bottom: 2rem; position: relative">
+        <span
+          style="
+            font-size: 4rem;
+            color: rgba(119, 150, 205, 0.2);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: serif;
+            line-height: 1;
+          "
+          >&ldquo;</span
+        >
+        <p
+          style="
+            color: #4a5568;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            white-space: pre-wrap;
+            font-style: italic;
+            z-index: 1;
+            position: relative;
+          "
+        >
+          {{ testimonial.text }}
+        </p>
+      </div>
+
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          border-top: 1px solid #edf2f7;
+          padding-top: 1.5rem;
+        "
+      >
+        <div
+          style="
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+          "
+        >
+          {{ testimonial.name.charAt(0) }}
+        </div>
+        <div>
+          <h4 style="margin: 0; color: var(--primary); font-size: 1.1rem; font-weight: 600">
+            {{ testimonial.name }}
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

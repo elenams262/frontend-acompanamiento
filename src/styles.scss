@@ -1,0 +1,140 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+:root {
+  --primary: #9db2de; /* Soft Blue */
+  --primary-light: #b7c7eb;
+  --secondary: #c8e6c9; /* Soft Sage */
+  --accent: #ffccbc; /* Warm Peach */
+  --dark: #212121;
+  --light: #f5f5f5;
+  --white: #ffffff;
+
+  --font-main: 'Inter', sans-serif;
+  --font-heading: 'Playfair Display', serif;
+
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--primary);
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+
+  &:hover {
+    color: var(--primary-light);
+  }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+
+  &:hover {
+    background-color: #5b7bb2;
+    transform: translateY(-2px);
+  }
+}
+
+.card {
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-lg);
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* Header & Nav */
+header {
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) 0;
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    ul {
+      display: flex;
+      gap: var(--spacing-md);
+      list-style: none;
+
+      li a {
+        font-weight: 500;
+        &.active-link {
+          color: var(--primary);
+          border-bottom: 2px solid var(--accent);
+        }
+      }
+    }
+  }
+}
+
+/* Footer */
+

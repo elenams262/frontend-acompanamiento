@@ -1,0 +1,186 @@
+@if (!isLoggedIn) {
+  <div
+    class="login-container"
+    style="
+      max-width: 400px;
+      margin: 4rem auto;
+      padding: 2rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      text-align: center;
+    "
+  >
+    <h2>Acceso Administrador</h2>
+    <form
+      (ngSubmit)="login()"
+      style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem"
+    >
+      <div>
+        <input
+          type="text"
+          [(ngModel)]="loginData.username"
+          name="username"
+          placeholder="Usuario"
+          required
+          style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px"
+        />
+      </div>
+      <div>
+        <input
+          type="password"
+          [(ngModel)]="loginData.password"
+          name="password"
+          placeholder="Contraseña"
+          required
+          style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px"
+        />
+      </div>
+      <button type="submit" class="btn" style="width: 100%; margin-top: 1rem">Entrar</button>
+    </form>
+  </div>
+} @else {
+  <div class="container" style="padding: 2rem 1rem">
+    <h2 style="text-align: center; margin-bottom: 2rem">Panel de Administración</h2>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem">
+      <!-- Formulario de Creación / Edición -->
+      <div>
+        <form (ngSubmit)="savePost()" class="card">
+          <h3>{{ editingPostId ? 'Editar Publicación' : 'Publicar en el Blog' }}</h3>
+
+          <div style="margin-bottom: 1rem">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: bold">Título</label>
+            <input
+              type="text"
+              [(ngModel)]="newPost.title"
+              name="title"
+              required
+              style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px"
+            />
+          </div>
+
+          <div style="margin-bottom: 1rem">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: bold">Imagen</label>
+            <input
+              type="file"
+              accept="image/*"
+              (change)="handleImageUpload($event)"
+              [required]="!editingPostId && !newPost.imageUrl"
+              style="
+                width: 100%;
+                padding: 0.75rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                background: white;
+              "
+            />
+            @if (newPost.imageUrl) {
+              <div style="margin-top: 1rem; text-align: center">
+                <img
+                  [src]="newPost.imageUrl"
+                  style="
+                    max-height: 200px;
+                    max-width: 100%;
+                    border-radius: 4px;
+                    object-fit: contain;
+                  "
+                  alt="Vista previa"
+                />
+              </div>
+            }
+          </div>
+
+          <div style="margin-bottom: 1rem">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: bold"
+              >Contenido (Texto)</label
+            >
+            <textarea
+              [(ngModel)]="newPost.content"
+              name="content"
+              rows="8"
+              required
+              style="
+                width: 100%;
+                padding: 0.75rem;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-family: inherit;
+              "
+            ></textarea>
+          </div>
+
+          <div style="display: flex; gap: 1rem; margin-top: 1.5rem">
+            <button type="submit" class="btn" style="flex: 1; font-size: 1.1rem; padding: 1rem">
+              {{ editingPostId ? 'Guardar Cambios' : 'Publicar Artículo' }}
+            </button>
+            @if (editingPostId) {
+              <button
+                type="button"
+                (click)="cancelEdit()"
+                class="btn"
+                style="flex: 1; font-size: 1.1rem; padding: 1rem; background: #666"
+              >
+                Cancelar
+              </button>
+            }
+          </div>
+        </form>
+      </div>
+
+      <!-- Lista de Publicaciones -->
+      <div>
+        <h3>Publicaciones Activas</h3>
+        @if (blogService.posts().length === 0) {
+          <p>No hay publicaciones.</p>
+        }
+
+        @for (post of blogService.posts(); track post.id) {
+          <div
+            class="card"
+            style="
+              padding: 1rem;
+              margin-bottom: 1rem;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              gap: 1rem;
+            "
+          >
+            <div style="flex: 1">
+              <span style="font-weight: bold; display: block">{{ post.title }}</span>
+              <small style="color: grey">{{ post.date | date: 'shortDate' }}</small>
+            </div>
+            <div style="display: flex; gap: 0.5rem">
+              <button
+                (click)="editPost(post)"
+                style="
+                  background: #2196f3;
+                  color: white;
+                  border: none;
+                  padding: 0.5rem 1rem;
+                  border-radius: 4px;
+                  cursor: pointer;
+                "
+              >
+                Editar
+              </button>
+              <button
+                (click)="blogService.deletePost(post.id)"
+                style="
+                  background: #e53935;
+                  color: white;
+                  border: none;
+                  padding: 0.5rem 1rem;
+                  border-radius: 4px;
+                  cursor: pointer;
+                "
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}

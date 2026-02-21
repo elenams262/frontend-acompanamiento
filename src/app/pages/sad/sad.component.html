@@ -1,0 +1,193 @@
+<section
+  class="sad-hero-section"
+  style="
+    position: relative;
+    color: white;
+    padding: 8rem 1rem;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+  "
+>
+  <!-- Background Image -->
+  <div
+    style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('assets/sad.avif');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    "
+  ></div>
+
+  <div class="container" style="position: relative; z-index: 2; max-width: 800px">
+    <h1
+      style="
+        font-size: 3.5rem;
+        margin-bottom: 2.5rem;
+        color: white;
+        text-shadow:
+          2px 2px 8px rgba(0, 0, 0, 0.8),
+          0 0 20px rgba(0, 0, 0, 0.5);
+        line-height: 1.2;
+      "
+    >
+      Servicio de Ayuda a Domicilio en la Comunidad de Madrid
+    </h1>
+
+    <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap">
+      <a
+        routerLink="/contacto"
+        class="btn"
+        style="
+          background: var(--accent);
+          color: var(--dark);
+          font-size: 1.2rem;
+          padding: 1rem 2rem;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        "
+      >
+        Solicitar Presupuesto
+      </a>
+
+      <a
+        routerLink="/contacto"
+        class="btn"
+        style="
+          background: transparent;
+          border: 2px solid white;
+          color: white;
+          font-size: 1.2rem;
+          padding: 1rem 2rem;
+          transition:
+            background 0.3s,
+            color 0.3s;
+        "
+        onmouseover="
+          this.style.background = 'white';
+          this.style.color = 'var(--primary)';
+        "
+        onmouseout="
+          this.style.background = 'transparent';
+          this.style.color = 'white';
+        "
+      >
+        Trabaja con Nosotros
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Service Description Section -->
+<section style="background-color: var(--light); padding: 5rem 1rem">
+  <div
+    class="container"
+    style="
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 4rem;
+      box-shadow: var(--shadow-md);
+    "
+  >
+    <h2
+      style="
+        font-size: 2.5rem;
+        color: var(--primary);
+        font-family: var(--font-heading);
+        margin-bottom: 2rem;
+        border-bottom: 3px solid var(--primary-light);
+        display: inline-block;
+        padding-bottom: 0.5rem;
+      "
+    >
+      ¿En qué consiste este servicio?
+    </h2>
+
+    <div
+      style="
+        font-size: 1.15rem;
+        color: #444;
+        line-height: 1.8;
+        display: flex;
+        flex-direction: column;
+        gap: 1.8rem;
+      "
+    >
+      <p>
+        Tanto si la persona necesita cuidados por dependencia como si simplemente requiere apoyo
+        puntual, el servicio de ayuda a domicilio en Madrid es una solución eficaz y cercana. Desde
+        el aseo personal, pasando por tareas del hogar, hasta el acompañamiento diario, este tipo de
+        atención mejora notablemente la calidad de vida de quienes más lo necesitan.
+      </p>
+
+      <div
+        style="
+          background: rgba(119, 150, 205, 0.1);
+          padding: 2rem;
+          border-left: 4px solid var(--primary-light);
+          border-radius: 0 8px 8px 0;
+        "
+      >
+        <p style="margin: 0; font-weight: 500; color: var(--primary)">
+          En Acompañamiento Sociosanitario, somos una entidad acreditada por la Comunidad de Madrid,
+          especializada en cuidados personalizados a domicilio. Contamos con profesionales de
+          confianza, cuidadosamente seleccionados, para ofrecer un servicio cercano, respetuoso y
+          profesional.
+        </p>
+      </div>
+
+      <p>
+        En la Comunidad de Madrid, los servicios de ayuda a domicilio deben ser ofrecidos por
+        entidades autorizadas. En Acompañamiento Sociosanitario, cumplimos con todos los requisitos
+        legales para proporcionar asistencia de calidad a quienes más lo necesitan, directamente en
+        su hogar.
+      </p>
+
+      <p>
+        ¿Un ser querido necesita apoyo en su día a día? ¿Vives con una persona mayor que requiere
+        cuidados? Nuestro equipo puede ayudarte desde el primer momento. Cuéntanos tu situación y te
+        orientaremos sin compromiso.
+      </p>
+
+      <p>
+        Seleccionamos cuidadosamente a cada miembro de nuestro personal, valorando no solo su
+        experiencia, sino también su sensibilidad y compromiso con las personas. Esto nos permite
+        ofrecer un servicio completo, que va más allá de las tareas básicas: acompañamos, apoyamos y
+        mejoramos el bienestar físico y emocional de quienes atendemos.
+      </p>
+
+      <p style="font-weight: 500; font-style: italic">
+        Gracias a nuestro enfoque profesional y humano, muchas familias ya han depositado su
+        confianza en nosotros.
+      </p>
+    </div>
+
+    <div style="text-align: center; margin-top: 4rem">
+      <a
+        routerLink="/contacto"
+        class="btn"
+        style="
+          background: var(--primary);
+          color: white;
+          font-size: 1.25rem;
+          padding: 1.2rem 3rem;
+          border-radius: 50px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        "
+      >
+        Solicita más información
+      </a>
+    </div>
+  </div>
+</section>

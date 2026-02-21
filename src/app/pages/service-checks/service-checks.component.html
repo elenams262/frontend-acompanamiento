@@ -1,0 +1,512 @@
+<section
+  class="cheque-hero-section"
+  style="
+    position: relative;
+    color: white;
+    padding: 8rem 1rem;
+    text-align: center;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+  "
+>
+  <!-- Background Image -->
+  <div
+    style="
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('assets/cheque-foto.avif');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    "
+  ></div>
+
+  <div class="container" style="position: relative; z-index: 2; max-width: 900px">
+    <h1
+      style="
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+        color: white;
+        text-shadow:
+          2px 2px 10px rgba(0, 0, 0, 0.9),
+          0 0 25px rgba(0, 0, 0, 0.7);
+        line-height: 1.2;
+      "
+    >
+      Gestión del Cheque Servicio en la Comunidad de Madrid
+    </h1>
+
+    <p
+      style="
+        font-size: 1.25rem;
+        line-height: 1.8;
+        margin-bottom: 3.5rem;
+        text-shadow:
+          2px 2px 6px rgba(0, 0, 0, 0.9),
+          0 0 15px rgba(0, 0, 0, 0.5);
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      "
+    >
+      ¿Tienes un familiar en situación de dependencia? El Cheque Servicio de la Comunidad de Madrid
+      es una ayuda económica mensual para contratar cuidados en el ámbito privado.
+      <strong>Acompañamiento Sociosanitario</strong> es un servicio acreditado por la Comunidad de
+      Madrid.
+    </p>
+
+    <div style="display: flex; justify-content: center">
+      <a
+        routerLink="/contacto"
+        class="btn"
+        style="
+          background: var(--accent);
+          color: var(--dark);
+          font-size: 1.3rem;
+          padding: 1.2rem 3.5rem;
+          border-radius: 50px;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+          transition:
+            transform 0.3s,
+            box-shadow 0.3s;
+        "
+        onmouseover="
+          this.style.transform = 'translateY(-3px)';
+          this.style.boxShadow = '0 6px 20px rgba(0,0,0,0.4)';
+        "
+        onmouseout="
+          this.style.transform = 'none';
+          this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.3)';
+        "
+      >
+        Tramitar cheque
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Información Detallada -->
+<section style="background-color: var(--light); padding: 5rem 1rem">
+  <div
+    class="container"
+    style="
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 12px;
+      padding: 4rem;
+      box-shadow: var(--shadow-md);
+    "
+  >
+    <!-- Cuantías y Grados -->
+    <h2
+      style="
+        font-size: 2.2rem;
+        color: var(--primary);
+        font-family: var(--font-heading);
+        margin-bottom: 1.5rem;
+        border-bottom: 3px solid var(--primary-light);
+        display: inline-block;
+        padding-bottom: 0.5rem;
+      "
+    >
+      ¿Cuánto paga el cheque servicio en la Comunidad de Madrid en 2025?
+    </h2>
+    <p style="font-size: 1.15rem; color: #444; line-height: 1.8; margin-bottom: 2.5rem">
+      El importe mensual varía en función del grado de dependencia y la capacidad económica del
+      beneficiario. Con esta ayuda económica podrás contratar nuestro servicio acreditado de
+      <strong>Acompañamiento Sociosanitario</strong>.
+    </p>
+
+    <div style="display: grid; gap: 1.5rem; margin-bottom: 5rem">
+      <!-- Grado 1 -->
+      <div
+        style="
+          background: rgba(119, 150, 205, 0.1);
+          padding: 1.8rem;
+          border-radius: 8px;
+          border-left: 5px solid var(--primary);
+        "
+      >
+        <h3 style="color: var(--primary); font-size: 1.35rem; margin-bottom: 0.5rem">
+          Grado 1: Dependencia Moderada
+        </h3>
+        <p style="color: #444; margin-bottom: 0.8rem; line-height: 1.6">
+          Se considera así cuando necesita ayuda para hacer actividades básicas al menos una vez al
+          día o tiene necesidades de apoyo para su autonomía a nivel personal.
+        </p>
+        <p style="color: var(--primary); font-weight: bold; margin: 0; font-size: 1.1rem">
+          El cheque es de 300€ al mes.
+        </p>
+      </div>
+
+      <!-- Grado 2 -->
+      <div
+        style="
+          background: rgba(119, 150, 205, 0.1);
+          padding: 1.8rem;
+          border-radius: 8px;
+          border-left: 5px solid var(--accent);
+        "
+      >
+        <h3 style="color: var(--primary); font-size: 1.35rem; margin-bottom: 0.5rem">
+          Grado 2: Dependencia Severa
+        </h3>
+        <p style="color: #444; margin-bottom: 0.8rem; line-height: 1.6">
+          Si necesita ayuda dos o tres veces al día para hacer actividades básicas, pero sin
+          requerir apoyo permanente. También se da cuando se necesita apoyo extenso para la
+          autonomía personal.
+        </p>
+        <p style="color: var(--primary); font-weight: bold; margin: 0; font-size: 1.1rem">
+          El cheque va de los 300€ hasta los 426,12€ al mes.
+        </p>
+      </div>
+
+      <!-- Grado 3 -->
+      <div
+        style="
+          background: rgba(119, 150, 205, 0.1);
+          padding: 1.8rem;
+          border-radius: 8px;
+          border-left: 5px solid var(--primary-light);
+        "
+      >
+        <h3 style="color: var(--primary); font-size: 1.35rem; margin-bottom: 0.5rem">
+          Grado 3: Gran Dependencia
+        </h3>
+        <p style="color: #444; margin-bottom: 0.8rem; line-height: 1.6">
+          Pérdida total de autonomía mental, física, sensorial o intelectual o necesidades de apoyo
+          generalizado para autonomía personal. Necesita el apoyo de manera continua.
+        </p>
+        <p style="color: var(--primary); font-weight: bold; margin: 0; font-size: 1.1rem">
+          El cheque es desde 429,04€ hasta 715,07€ mensuales.
+        </p>
+      </div>
+    </div>
+
+    <!-- Guía paso a paso -->
+    <h2
+      style="
+        font-size: 2.2rem;
+        color: var(--primary);
+        font-family: var(--font-heading);
+        margin-bottom: 2.5rem;
+        border-bottom: 3px solid var(--primary-light);
+        display: inline-block;
+        padding-bottom: 0.5rem;
+      "
+    >
+      Pasos para solicitar el cheque servicio de la Comunidad de Madrid
+    </h2>
+
+    <div style="display: flex; flex-direction: column; gap: 2.5rem">
+      <!-- Paso 1 -->
+      <div>
+        <h3
+          style="
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+          "
+        >
+          <span
+            style="
+              background: var(--primary);
+              color: white;
+              width: 35px;
+              height: 35px;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              font-size: 1.1rem;
+              flex-shrink: 0;
+            "
+            >1</span
+          >
+          Contacta con Servicios Sociales
+        </h3>
+        <p style="color: #444; line-height: 1.6; padding-left: 3rem; margin: 0; font-size: 1.1rem">
+          Llama al 010 o al 012 para iniciar la gestión desde el centro de servicios sociales
+          correspondiente a tu domicilio.
+        </p>
+      </div>
+
+      <!-- Paso 2 -->
+      <div>
+        <h3
+          style="
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+          "
+        >
+          <span
+            style="
+              background: var(--primary);
+              color: white;
+              width: 35px;
+              height: 35px;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              font-size: 1.1rem;
+              flex-shrink: 0;
+            "
+            >2</span
+          >
+          Presenta la solicitud de reconocimiento de dependencia
+        </h3>
+        <div style="color: #444; line-height: 1.6; padding-left: 3rem; font-size: 1.1rem">
+          <p style="margin-bottom: 0.8rem">Debes aportar la siguiente documentación:</p>
+          <ul style="margin-bottom: 1rem; padding-left: 1.5rem; list-style-type: disc">
+            <li style="margin-bottom: 0.3rem">
+              Informe médico con fecha reciente (máximo 3 meses).
+            </li>
+            <li style="margin-bottom: 0.3rem">Copia del DNI/NIE.</li>
+            <li style="margin-bottom: 0.3rem">
+              Certificado de empadronamiento en la Comunidad de Madrid.
+            </li>
+            <li style="margin-bottom: 0.3rem">
+              Declaración responsable de tu situación económica y patrimonial.
+            </li>
+            <li style="margin-bottom: 0.3rem">Si procede, certificado de discapacidad.</li>
+            <li style="margin-bottom: 0.3rem">
+              Autorización para que la administración consulte tus datos.
+            </li>
+          </ul>
+          <p style="margin: 0">
+            Puedes presentar la solicitud online o en persona, a través de un centro autorizado.
+          </p>
+        </div>
+      </div>
+
+      <!-- Paso 3 -->
+      <div>
+        <h3
+          style="
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+          "
+        >
+          <span
+            style="
+              background: var(--primary);
+              color: white;
+              width: 35px;
+              height: 35px;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              font-size: 1.1rem;
+              flex-shrink: 0;
+            "
+            >3</span
+          >
+          Espera la visita de valoración
+        </h3>
+        <p style="color: #444; line-height: 1.6; padding-left: 3rem; margin: 0; font-size: 1.1rem">
+          Se te asignará una fecha para que un profesional sociosanitario acuda al domicilio
+          habitual. Este técnico está formado en el Baremo de Valoración de la Dependencia (BVD) y
+          elaborará un informe con el grado de dependencia reconocido.
+        </p>
+      </div>
+
+      <!-- Paso 4 -->
+      <div>
+        <h3
+          style="
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+          "
+        >
+          <span
+            style="
+              background: var(--primary);
+              color: white;
+              width: 35px;
+              height: 35px;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              font-size: 1.1rem;
+              flex-shrink: 0;
+            "
+            >4</span
+          >
+          Se emite el PAI (Plan de Atención Individualizado)
+        </h3>
+        <p style="color: #444; line-height: 1.6; padding-left: 3rem; margin: 0; font-size: 1.1rem">
+          Con el grado ya reconocido, se establece este plan en el que podrás continuar contratando
+          nuestros servicios acreditados de Acompañamiento Sanitario para recibir el Cheque
+          Servicio.
+        </p>
+      </div>
+
+      <!-- Paso 5 -->
+      <div>
+        <h3
+          style="
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+          "
+        >
+          <span
+            style="
+              background: var(--primary);
+              color: white;
+              width: 35px;
+              height: 35px;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              font-size: 1.1rem;
+              flex-shrink: 0;
+            "
+            >5</span
+          >
+          Envío del contrato de prestación de servicios
+        </h3>
+        <p style="color: #444; line-height: 1.6; padding-left: 3rem; margin: 0; font-size: 1.1rem">
+          Debes enviar el contrato de prestación de servicios que tienes con nosotros a la Comunidad
+          de Madrid, para validar tu solicitud de prestación económica vinculada al servicio.
+        </p>
+      </div>
+
+      <!-- Paso 6 -->
+      <div>
+        <h3
+          style="
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+          "
+        >
+          <span
+            style="
+              background: var(--primary);
+              color: white;
+              width: 35px;
+              height: 35px;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              font-size: 1.1rem;
+              flex-shrink: 0;
+            "
+            >6</span
+          >
+          Resolución y concesión de la ayuda
+        </h3>
+        <p style="color: #444; line-height: 1.6; padding-left: 3rem; margin: 0; font-size: 1.1rem">
+          En un plazo máximo de 6 meses, la Comunidad de Madrid te comunicará la resolución con la
+          cuantía asignada.
+        </p>
+      </div>
+
+      <!-- Paso 7 -->
+      <div>
+        <h3
+          style="
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+          "
+        >
+          <span
+            style="
+              background: var(--primary);
+              color: white;
+              width: 35px;
+              height: 35px;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              font-size: 1.1rem;
+              flex-shrink: 0;
+            "
+            >7</span
+          >
+          Comienzo de los pagos mensuales
+        </h3>
+        <p style="color: #444; line-height: 1.6; padding-left: 3rem; margin: 0; font-size: 1.1rem">
+          Una vez aprobada, la ayuda se ingresará mensualmente en tu cuenta bancaria. Además, se
+          incluirán los importes retroactivos desde la fecha de solicitud.
+        </p>
+      </div>
+
+      <!-- Paso 8 -->
+      <div>
+        <h3
+          style="
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+          "
+        >
+          <span
+            style="
+              background: var(--primary);
+              color: white;
+              width: 35px;
+              height: 35px;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              font-size: 1.1rem;
+              flex-shrink: 0;
+            "
+            >8</span
+          >
+          Registro en la plataforma de dependencia
+        </h3>
+        <p style="color: #444; line-height: 1.6; padding-left: 3rem; margin: 0; font-size: 1.1rem">
+          La persona beneficiaria quedará dada de alta en una aplicación oficial que recoge y
+          supervisa los servicios de atención prestados.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

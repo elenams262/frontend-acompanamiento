@@ -1,0 +1,118 @@
+.main-footer {
+  background: var(--primary);
+  color: var(--white);
+  padding: 4rem 1rem 2rem;
+  margin-top: 4rem;
+  
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .footer-logo {
+    background: var(--white);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    img {
+      max-height: 80px;
+      width: auto;
+      display: block;
+    }
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 1.5rem;
+    
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: var(--white);
+        color: var(--primary);
+        transform: translateY(-3px);
+      }
+      
+      .social-icon {
+        width: 22px;
+        height: 22px;
+      }
+    }
+  }
+
+  .footer-nav {
+    width: 100%;
+    
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem 1.2rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      li a {
+        color: var(--white);
+        opacity: 0.9;
+        font-weight: 500;
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+        transition: opacity 0.3s;
+        text-decoration: none;
+        
+        &:hover {
+          opacity: 1;
+          color: var(--accent);
+          text-decoration: underline;
+        }
+      }
+    }
+    
+    .nav-divider {
+      border: 0;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.2);
+      margin: 2rem auto;
+      max-width: 800px;
+    }
+    
+    .legal-nav {
+      gap: 1.5rem;
+      
+      li a {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        
+        &:hover {
+          opacity: 1;
+          color: var(--white);
+        }
+      }
+    }
+  }
+
+  .footer-copyright {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    text-align: center;
+  }
+}

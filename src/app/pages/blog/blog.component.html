@@ -1,0 +1,35 @@
+<div class="container" style="padding: 2rem 1rem">
+  <h1 style="text-align: center; margin-bottom: 2rem">Nuestro Blog</h1>
+
+  <div
+    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem"
+  >
+    @for (post of posts(); track post.id) {
+      <article class="card">
+        @if (post.imageUrl) {
+          <div
+            style="
+              height: 200px;
+              overflow: hidden;
+              border-radius: 4px 4px 0 0;
+              margin: -2rem -2rem 1rem -2rem;
+            "
+          >
+            <img
+              [src]="post.imageUrl"
+              [alt]="post.title"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+        }
+        <small style="color: grey">{{ post.date | date: 'dd MMM yyyy' }}</small>
+        <h2 style="margin: 0.5rem 0">{{ post.title }}</h2>
+        <p>{{ post.content | slice: 0 : 150 }}{{ post.content.length > 150 ? '...' : '' }}</p>
+      </article>
+    } @empty {
+      <p style="text-align: center; grid-column: 1/-1">
+        No hay publicaciones disponibles en este momento.
+      </p>
+    }
+  </div>
+</div>
