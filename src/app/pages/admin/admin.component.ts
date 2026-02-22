@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BlogService } from '../../services/blog.service';
+import { ContactService } from '../../services/contact.service';
 
 @Component({
   selector: 'app-admin',
@@ -12,6 +13,7 @@ import { BlogService } from '../../services/blog.service';
 })
 export class AdminComponent {
   blogService = inject(BlogService);
+  contactService = inject(ContactService);
 
   isLoggedIn = false;
   loginData = {

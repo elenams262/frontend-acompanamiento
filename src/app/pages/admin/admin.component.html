@@ -182,5 +182,80 @@
         }
       </div>
     </div>
+
+    <!-- Sección de Mensajes de Contacto -->
+    <div style="margin-top: 3rem">
+      <h3 style="margin-bottom: 1.5rem; text-align: center; color: var(--primary)">
+        Mensajes de Contacto
+      </h3>
+      @if (contactService.contacts().length === 0) {
+        <p style="text-align: center; color: #666">No hay mensajes de contacto.</p>
+      }
+
+      <div style="display: flex; flex-direction: column; gap: 1rem">
+        @for (contact of contactService.contacts(); track contact.id) {
+          <div
+            class="card"
+            style="
+              padding: 1.5rem;
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+              border-left: 4px solid var(--primary);
+            "
+          >
+            <div style="display: flex; justify-content: space-between; align-items: flex-start">
+              <div>
+                <strong>{{ contact.name }}</strong>
+                <span style="color: #666; font-size: 0.9em; margin-left: 0.5rem">
+                  <a [href]="'mailto:' + contact.email" style="color: var(--primary)">{{
+                    contact.email
+                  }}</a>
+                  |
+                  <a [href]="'tel:' + contact.phone" style="color: var(--primary)">{{
+                    contact.phone
+                  }}</a>
+                </span>
+              </div>
+              <small style="color: #999">{{ contact.date | date: 'short' }}</small>
+            </div>
+
+            <div style="margin-top: 0.5rem">
+              <strong style="color: #444">Asunto:</strong> {{ contact.subject }}
+            </div>
+
+            <div
+              style="
+                background: #fdfdfd;
+                padding: 1rem;
+                border-radius: 4px;
+                border: 1px solid #eee;
+                margin-top: 0.5rem;
+                white-space: pre-wrap;
+              "
+            >
+              {{ contact.message }}
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; margin-top: 1rem">
+              <button
+                (click)="contactService.deleteContact(contact.id!)"
+                style="
+                  background: #e53935;
+                  color: white;
+                  border: none;
+                  padding: 0.5rem 1rem;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  font-size: 0.9em;
+                "
+              >
+                Eliminar Mensaje
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
   </div>
 }

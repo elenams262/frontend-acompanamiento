@@ -9,13 +9,21 @@
   >
     Contáctanos
   </h1>
-  <form class="card" style="padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-md)">
+  <form
+    #contactForm="ngForm"
+    (ngSubmit)="onSubmit(contactForm)"
+    class="card"
+    style="padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-md)"
+  >
     <div style="margin-bottom: 1.25rem">
       <label style="display: block; margin-bottom: 0.5rem; font-weight: bold; color: #444"
         >Nombre *</label
       >
       <input
         type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="formData.name"
         required
         style="
           width: 100%;
@@ -33,6 +41,9 @@
       >
       <input
         type="tel"
+        id="phone"
+        name="phone"
+        [(ngModel)]="formData.phone"
         required
         style="
           width: 100%;
@@ -50,6 +61,9 @@
       >
       <input
         type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="formData.email"
         required
         style="
           width: 100%;
@@ -67,6 +81,9 @@
       >
       <input
         type="text"
+        id="subject"
+        name="subject"
+        [(ngModel)]="formData.subject"
         required
         style="
           width: 100%;
@@ -83,6 +100,9 @@
         >Mensaje *</label
       >
       <textarea
+        id="message"
+        name="message"
+        [(ngModel)]="formData.message"
         rows="5"
         required
         style="
@@ -100,6 +120,8 @@
       <input
         type="checkbox"
         id="privacy-policy"
+        name="privacyPolicy"
+        [(ngModel)]="formData.privacyPolicy"
         required
         style="margin-top: 0.25rem; transform: scale(1.2); cursor: pointer"
       />
@@ -117,8 +139,41 @@
       </label>
     </div>
 
+    @if (submitSuccess) {
+      <div
+        style="
+          margin-bottom: 1.5rem;
+          padding: 1rem;
+          background-color: #d4edda;
+          color: #155724;
+          border: 1px solid #c3e6cb;
+          border-radius: 4px;
+          text-align: center;
+        "
+      >
+        ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.
+      </div>
+    }
+
+    @if (submitError) {
+      <div
+        style="
+          margin-bottom: 1.5rem;
+          padding: 1rem;
+          background-color: #f8d7da;
+          color: #721c24;
+          border: 1px solid #f5c6cb;
+          border-radius: 4px;
+          text-align: center;
+        "
+      >
+        Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.
+      </div>
+    }
+
     <button
       type="submit"
+      [disabled]="contactForm.invalid || isSubmitting"
       class="btn"
       style="
         width: 100%;
@@ -128,7 +183,7 @@
         letter-spacing: 1px;
       "
     >
-      Enviar Mensaje
+      {{ isSubmitting ? 'Enviando...' : 'Enviar Mensaje' }}
     </button>
   </form>
 </div>
