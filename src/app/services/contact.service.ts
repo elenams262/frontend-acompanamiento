@@ -35,6 +35,12 @@ export class ContactService {
     return this.http.post<Contact>(this.apiUrl, contactData);
   }
 
+  getConfig() {
+    return this.http.get<{ accessKey: string }>(
+      'https://backend-acompanamiento.onrender.com/api/config/web3forms',
+    );
+  }
+
   deleteContact(id: string) {
     this.http.delete(`${this.apiUrl}/${id}`).subscribe(
       () => this.loadContacts(),
