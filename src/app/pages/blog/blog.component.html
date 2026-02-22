@@ -5,7 +5,13 @@
     style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem"
   >
     @for (post of posts(); track post.id) {
-      <article class="card">
+      <article
+        class="card"
+        (click)="openPost(post)"
+        style="cursor: pointer; transition: transform 0.2s"
+        onmouseover="this.style.transform = 'scale(1.02)'"
+        onmouseout="this.style.transform = 'scale(1)'"
+      >
         @if (post.imageUrl) {
           <div
             style="
@@ -22,7 +28,6 @@
             />
           </div>
         }
-        <small style="color: grey">{{ post.date | date: 'dd MMM yyyy' }}</small>
         <h2 style="margin: 0.5rem 0">{{ post.title }}</h2>
         <p>{{ post.content | slice: 0 : 150 }}{{ post.content.length > 150 ? '...' : '' }}</p>
       </article>
@@ -33,3 +38,77 @@
     }
   </div>
 </div>
+
+@if (selectedPost) {
+  <div
+    style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 1rem;
+    "
+    (click)="closePost()"
+  >
+    <div
+      style="
+        background: white;
+        border-radius: 8px;
+        max-width: 800px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 2rem;
+        position: relative;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      "
+      (click)="$event.stopPropagation()"
+    >
+      <button
+        (click)="closePost()"
+        style="
+          position: absolute;
+          top: 1rem;
+          right: 1rem;
+          background: #e53935;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          font-weight: bold;
+          font-size: 1.2rem;
+          line-height: 1;
+        "
+      >
+        &times;
+      </button>
+
+      @if (selectedPost.imageUrl) {
+        <div style="margin: -2rem -2rem 2rem -2rem; border-radius: 8px 8px 0 0; overflow: hidden">
+          <img
+            [src]="selectedPost.imageUrl"
+            [alt]="selectedPost.title"
+            style="width: 100%; max-height: 400px; object-fit: cover; display: block"
+          />
+        </div>
+      }
+      <h2 style="margin-top: 0; font-size: 2rem; color: var(--primary)">
+        {{ selectedPost.title }}
+      </h2>
+      <div style="font-size: 1.1rem; line-height: 1.6; color: #444; white-space: pre-wrap">
+        {{ selectedPost.content }}
+      </div>
+    </div>
+  </div>
+}

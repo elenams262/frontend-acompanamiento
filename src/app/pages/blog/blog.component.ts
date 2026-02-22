@@ -12,4 +12,16 @@ import { BlogService } from '../../services/blog.service';
 export class BlogComponent {
   blogService = inject(BlogService);
   posts = this.blogService.getPosts(); // Signal
+
+  selectedPost: any = null;
+
+  openPost(post: any) {
+    this.selectedPost = post;
+    document.body.style.overflow = 'hidden'; // Stop background scrolling
+  }
+
+  closePost() {
+    this.selectedPost = null;
+    document.body.style.overflow = 'auto'; // Restore background scrolling
+  }
 }
