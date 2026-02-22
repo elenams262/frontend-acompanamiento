@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ContactService } from '../../services/contact.service';
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-contact',
@@ -37,34 +38,37 @@ export class ContactComponent {
 
     this.contactService.addContact(this.formData).subscribe({
       next: (response) => {
-        // Now try to send email using Web3Forms from the frontend browser
-        this.contactService.getConfig().subscribe({
-          next: async (config) => {
-            if (config.accessKey) {
-              try {
-                await fetch('https://api.web3forms.com/submit', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    Accept: 'application/json',
-                  },
-                  body: JSON.stringify({
-                    access_key: config.accessKey,
-                    subject: `Nuevo mensaje de contacto: ${this.formData.subject}`,
-                    from_name: this.formData.name,
-                    email: this.formData.email,
-                    message: `Has recibido un nuevo mensaje de contacto.\n\nNombre: ${this.formData.name}\nTeléfono: ${this.formData.phone}\nEmail: ${this.formData.email}\nAsunto: ${this.formData.subject}\n\nMensaje:\n${this.formData.message}`,
-                  }),
-                });
-              } catch (e) {
-                console.error('Error enviando a web3forms desde frontend', e);
-              }
-            }
+        // Now try to send email using EmailJS from the frontend browser
+        try {
+          const templateParams = {
+            subject: this.formData.subject,
+            name: this.formData.name,
+            email: this.formData.email,
+            phone: this.formData.phone,
+            message: this.formData.message,
+          };
 
-            this.finalizeSubmit(form);
-          },
-          error: () => this.finalizeSubmit(form),
-        });
+          emailjs
+            .send(
+              'service_p4cnkfu', // Service ID
+              'template_q3vdqoi', // Template ID
+              templateParams,
+              'vmg5kc-DRY-DAumJD', // Public Key
+            )
+            .then(
+              () => {
+                console.log('Correo enviado con éxito mediante EmailJS');
+                this.finalizeSubmit(form);
+              },
+              (error) => {
+                console.error('Error enviando a EmailJS desde frontend', error);
+                this.finalizeSubmit(form); // Fallback: still show success to user if saved in DB
+              },
+            );
+        } catch (e) {
+          console.error('Excepción al enviar con EmailJS: ', e);
+          this.finalizeSubmit(form);
+        }
       },
       error: (error) => {
         console.error('Error submitting form to db', error);
