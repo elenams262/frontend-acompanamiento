@@ -40,7 +40,23 @@
   </div>
 } @else {
   <div class="container" style="padding: 2rem 1rem">
-    <h2 style="text-align: center; margin-bottom: 2rem">Panel de Administración</h2>
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+      "
+    >
+      <h2 style="margin: 0">Panel de Administración</h2>
+      <button
+        (click)="logout()"
+        class="btn"
+        style="background: #e53935; padding: 0.5rem 1rem; font-size: 0.9rem"
+      >
+        Cerrar Sesión
+      </button>
+    </div>
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem">
       <!-- Formulario de Creación / Edición -->
@@ -110,12 +126,26 @@
           </div>
 
           <div style="display: flex; gap: 1rem; margin-top: 1.5rem">
-            <button type="submit" class="btn" style="flex: 1; font-size: 1.1rem; padding: 1rem">
-              {{ editingPostId ? 'Guardar Cambios' : 'Publicar Artículo' }}
+            <button
+              type="submit"
+              [disabled]="isSubmitting"
+              class="btn"
+              style="flex: 1; font-size: 1.1rem; padding: 1rem"
+            >
+              {{
+                editingPostId
+                  ? isSubmitting
+                    ? 'Guardando...'
+                    : 'Guardar Cambios'
+                  : isSubmitting
+                    ? 'Publicando...'
+                    : 'Publicar Artículo'
+              }}
             </button>
             @if (editingPostId) {
               <button
                 type="button"
+                [disabled]="isSubmitting"
                 (click)="cancelEdit()"
                 class="btn"
                 style="flex: 1; font-size: 1.1rem; padding: 1rem; background: #666"

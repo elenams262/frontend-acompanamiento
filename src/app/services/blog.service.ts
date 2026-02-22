@@ -1,6 +1,7 @@
 import { Injectable, signal, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from '../models/post.model';
+import { tap } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -26,15 +27,11 @@ export class BlogService {
   }
 
   addPost(postData: FormData) {
-    this.http.post<Post>(this.apiUrl, postData).subscribe(() => {
-      this.loadPosts();
-    });
+    return this.http.post<Post>(this.apiUrl, postData).pipe(tap(() => this.loadPosts()));
   }
 
   updatePost(id: string, postData: FormData) {
-    this.http.put<Post>(`${this.apiUrl}/${id}`, postData).subscribe(() => {
-      this.loadPosts();
-    });
+    return this.http.put<Post>(`${this.apiUrl}/${id}`, postData).pipe(tap(() => this.loadPosts()));
   }
 
   deletePost(id: string) {

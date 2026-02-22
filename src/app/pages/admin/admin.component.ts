@@ -21,15 +21,30 @@ export class AdminComponent {
     password: '',
   };
 
+  isSubmitting = false;
+
+  constructor() {
+    // Check if user was already logged in during this session
+    if (sessionStorage.getItem('isAdminLoggedIn') === 'true') {
+      this.isLoggedIn = true;
+    }
+  }
+
   login() {
     if (
       this.loginData.username === 'admin' &&
       this.loginData.password === 'acompanamientoadmin321'
     ) {
       this.isLoggedIn = true;
+      sessionStorage.setItem('isAdminLoggedIn', 'true');
     } else {
       alert('Credenciales incorrectas');
     }
+  }
+
+  logout() {
+    this.isLoggedIn = false;
+    sessionStorage.removeItem('isAdminLoggedIn');
   }
 
   newPost = {
@@ -87,6 +102,8 @@ export class AdminComponent {
       return;
     }
 
+    this.isSubmitting = true;
+
     const formData = new FormData();
     formData.append('title', this.newPost.title);
     formData.append('content', this.newPost.content);
@@ -95,14 +112,33 @@ export class AdminComponent {
     }
 
     if (this.editingPostId) {
-      this.blogService.updatePost(this.editingPostId, formData);
-      alert('Publicación actualizada con éxito!');
+      this.blogService.updatePost(this.editingPostId, formData).subscribe({
+        next: () => {
+          alert('Publicación actualizada con éxito!');
+          this.isSubmitting = false;
+          this.cancelEdit();
+        },
+        error: (err: any) => {
+          console.error(err);
+          alert('Error al actualizar la publicación. Revisa la consola.');
+          this.isSubmitting = false;
+        },
+      });
     } else {
-      this.blogService.addPost(formData);
-      alert('Publicación creada con éxito!');
+      this.blogService.addPost(formData).subscribe({
+        next: () => {
+          alert('Publicación creada con éxito!');
+          this.isSubmitting = false;
+          this.cancelEdit();
+        },
+        error: (err: any) => {
+          console.error(err);
+          alert(
+            'Error al crear la publicación. Verifica tu conexión y configuración de base de datos.',
+          );
+          this.isSubmitting = false;
+        },
+      });
     }
-
-    // Reset form
-    this.cancelEdit();
   }
 }
