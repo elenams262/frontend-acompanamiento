@@ -19,11 +19,11 @@ export class TestimonialService {
   constructor(private http: HttpClient) {}
 
   getApprovedTestimonials(): Observable<Testimonial[]> {
-    return this.http.get<Testimonial[]>(`${this.apiUrl}/approved`);
+    return this.http.get<Testimonial[]>(`${this.apiUrl}/approved?t=${new Date().getTime()}`);
   }
 
   getAllTestimonials(): Observable<Testimonial[]> {
-    return this.http.get<Testimonial[]>(`${this.apiUrl}/all`);
+    return this.http.get<Testimonial[]>(`${this.apiUrl}/all?t=${new Date().getTime()}`);
   }
 
   createTestimonial(testimonial: Partial<Testimonial>): Observable<Testimonial> {
