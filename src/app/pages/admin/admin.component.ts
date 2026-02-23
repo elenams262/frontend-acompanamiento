@@ -42,28 +42,6 @@ export class AdminComponent {
     });
   }
 
-  toggleTestimonialApproval(id: string) {
-    this.testimonialService.toggleApproval(id).subscribe({
-      next: (updatedTestimonial) => {
-        // Actualizamos localmente para evitar problemas de caché del navegador
-        const index = this.testimonials.findIndex((t) => t.id === id);
-        if (index !== -1) {
-          this.testimonials[index].approved = updatedTestimonial.approved;
-          this.testimonials = [...this.testimonials]; // Forzar change detection
-        }
-      },
-      error: (err) => {
-        console.error('Error toggling approval', err);
-        alert(
-          'Error al intentar aprobar: ' +
-            (err.message || 'Inténtalo de nuevo') +
-            ' - STATUS: ' +
-            err.status,
-        );
-      },
-    });
-  }
-
   deleteTestimonial(id: string) {
     if (confirm('¿Seguro que quieres borrar esta reseña de forma permanente?')) {
       this.testimonialService.deleteTestimonial(id).subscribe({

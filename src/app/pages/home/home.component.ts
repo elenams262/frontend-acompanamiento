@@ -125,9 +125,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.submitMessage = '';
 
     this.testimonialService.createTestimonial(this.newTestimonial).subscribe({
-      next: () => {
+      next: (createdTestimonial) => {
         this.submitMessage =
-          '¡Gracias por compartir tu experiencia! Tu reseña está pendiente de aprobación.';
+          '¡Gracias por compartir tu experiencia! Tu reseña se ha publicado con éxito.';
+
+        // Add to the list immediately so the user sees it
+        this.testimonials = [
+          ...this.testimonials,
+          {
+            name: createdTestimonial.name,
+            text: createdTestimonial.text,
+          },
+        ];
+
         this.newTestimonial = { name: '', text: '' };
         this.isSubmitting = false;
       },
