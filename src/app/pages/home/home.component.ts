@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         'Respuesta rápida y flexible ante imprevistos. Estamos disponibles cuando surge una necesidad inesperada de cuidado y atención.',
       image: 'assets/acompanamiento-urgente.jpeg',
       imagePosition: 'bottom',
-      link: '/contacto',
+      link: '/servicios',
     },
     {
       title: 'Acompañamiento de Ocio Saludable',
