@@ -34,22 +34,57 @@
 
   <!-- Navigation Bar -->
   <nav class="nav-bar">
-    <div class="container">
-      <ul>
-        <li><a routerLink="/inicio" routerLinkActive="active-link">Inicio</a></li>
-        <li><a routerLink="/quienes-somos" routerLinkActive="active-link">¿Quiénes Somos?</a></li>
+    <div class="container nav-container">
+      <!-- Hamburger Icon -->
+      <button
+        class="menu-toggle"
+        (click)="toggleMenu()"
+        [class.open]="isMenuOpen"
+        aria-label="Menú"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul [class.nav-open]="isMenuOpen">
         <li>
-          <a routerLink="/sad-atencion-personal" routerLinkActive="active-link"
+          <a routerLink="/inicio" routerLinkActive="active-link" (click)="closeMenu()">Inicio</a>
+        </li>
+        <li>
+          <a routerLink="/quienes-somos" routerLinkActive="active-link" (click)="closeMenu()"
+            >¿Quiénes Somos?</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/sad-atencion-personal"
+            routerLinkActive="active-link"
+            (click)="closeMenu()"
             >SAD - Atención Personal</a
           >
         </li>
-        <li><a routerLink="/servicios" routerLinkActive="active-link">Servicios</a></li>
-        <li><a routerLink="/tarjetas-regalo" routerLinkActive="active-link">Tarjetas Regalo</a></li>
         <li>
-          <a routerLink="/cheques-servicio" routerLinkActive="active-link">Cheque Servicio</a>
+          <a routerLink="/servicios" routerLinkActive="active-link" (click)="closeMenu()"
+            >Servicios</a
+          >
         </li>
-        <li><a routerLink="/blog" routerLinkActive="active-link">Blog</a></li>
-        <li><a routerLink="/contacto" routerLinkActive="active-link">Contacto</a></li>
+        <li>
+          <a routerLink="/tarjetas-regalo" routerLinkActive="active-link" (click)="closeMenu()"
+            >Tarjetas Regalo</a
+          >
+        </li>
+        <li>
+          <a routerLink="/cheques-servicio" routerLinkActive="active-link" (click)="closeMenu()"
+            >Cheque Servicio</a
+          >
+        </li>
+        <li><a routerLink="/blog" routerLinkActive="active-link" (click)="closeMenu()">Blog</a></li>
+        <li>
+          <a routerLink="/contacto" routerLinkActive="active-link" (click)="closeMenu()"
+            >Contacto</a
+          >
+        </li>
       </ul>
     </div>
   </nav>
