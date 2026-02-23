@@ -1,3 +1,32 @@
+.hero-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: white;
+  line-height: 1.2;
+}
+
+.hero-text {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white; /* from previous inline rules or inherited */
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2rem; /* Reduces text size on phones so it's not cut off */
+    word-wrap: break-word;
+    hyphens: auto;
+    padding: 0 0.5rem;
+  }
+  
+  .hero-text {
+    font-size: 1.1rem;
+    padding: 0 0.5rem;
+  }
+}
 
 .services-carousel-section {
   max-width: 900px;
