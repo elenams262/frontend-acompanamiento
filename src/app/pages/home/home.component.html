@@ -237,7 +237,12 @@
   </div>
 
   <div
-    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem"
+    style="
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    "
   >
     <div
       *ngFor="let testimonial of testimonials"
@@ -323,5 +328,102 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div
+    style="
+      background: #f8fbff;
+      padding: 3rem;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+    "
+  >
+    <h3 style="color: var(--primary); font-size: 1.8rem; margin-bottom: 1rem">
+      ¿Has utilizado nuestros servicios?
+    </h3>
+    <p style="color: #666; margin-bottom: 2rem">
+      Nos encantaría conocer tu experiencia. Comparte tu opinión para ayudar a otras familias a
+      conocer mejor nuestro trabajo.
+    </p>
+
+    <form (ngSubmit)="submitTestimonial()" style="text-align: left">
+      <div style="margin-bottom: 1.5rem">
+        <label
+          for="testimo-name"
+          style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #444"
+          >Tu Nombre o Iniciales</label
+        >
+        <input
+          type="text"
+          id="testimo-name"
+          name="name"
+          [(ngModel)]="newTestimonial.name"
+          required
+          style="
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+          "
+        />
+      </div>
+      <div style="margin-bottom: 1.5rem">
+        <label
+          for="testimo-text"
+          style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: #444"
+          >Tu Reseña</label
+        >
+        <textarea
+          id="testimo-text"
+          name="text"
+          [(ngModel)]="newTestimonial.text"
+          rows="4"
+          required
+          style="
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+            resize: vertical;
+          "
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        [disabled]="isSubmitting"
+        class="btn"
+        style="
+          width: 100%;
+          background: var(--accent);
+          color: var(--dark);
+          border: none;
+          font-size: 1.1rem;
+          padding: 1rem;
+          cursor: pointer;
+        "
+      >
+        {{ isSubmitting ? 'Enviando...' : 'Enviar Reseña' }}
+      </button>
+
+      <div
+        *ngIf="submitMessage"
+        style="
+          margin-top: 1rem;
+          text-align: center;
+          padding: 1rem;
+          border-radius: 4px;
+          background: rgba(119, 150, 205, 0.1);
+          color: var(--primary);
+          font-weight: 500;
+        "
+      >
+        {{ submitMessage }}
+      </div>
+    </form>
   </div>
 </section>

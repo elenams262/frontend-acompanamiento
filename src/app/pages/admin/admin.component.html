@@ -287,5 +287,95 @@
         }
       </div>
     </div>
+
+    <!-- Sección de Reseñas de Usuarios -->
+    <div style="margin-top: 3rem; border-top: 2px solid #eee; padding-top: 2rem">
+      <h3 style="margin-bottom: 1.5rem; text-align: center; color: var(--primary)">
+        Gestión de Reseñas (Testimonios)
+      </h3>
+      @if (testimonials.length === 0) {
+        <p style="text-align: center; color: #666">No hay reseñas pendientes ni aprobadas.</p>
+      }
+
+      <div style="display: flex; flex-direction: column; gap: 1rem">
+        @for (testimo of testimonials; track testimo.id) {
+          <div
+            class="card"
+            style="
+              padding: 1.5rem;
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+              border-left: 4px solid;
+            "
+            [style.borderLeftColor]="testimo.approved ? '#4caf50' : '#ff9800'"
+          >
+            <div style="display: flex; justify-content: space-between; align-items: flex-start">
+              <div>
+                <strong>{{ testimo.name }}</strong>
+                <span
+                  style="
+                    margin-left: 1rem;
+                    padding: 0.2rem 0.5rem;
+                    border-radius: 4px;
+                    font-size: 0.8rem;
+                    color: white;
+                  "
+                  [style.backgroundColor]="testimo.approved ? '#4caf50' : '#ff9800'"
+                >
+                  {{ testimo.approved ? 'Aprobado' : 'Pendiente' }}
+                </span>
+              </div>
+              <small style="color: #999">{{ testimo.date | date: 'short' }}</small>
+            </div>
+
+            <div
+              style="
+                background: #fdfdfd;
+                padding: 1rem;
+                border-radius: 4px;
+                border: 1px solid #eee;
+                margin-top: 0.5rem;
+                white-space: pre-wrap;
+                font-style: italic;
+              "
+            >
+              "{{ testimo.text }}"
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem">
+              <button
+                (click)="toggleTestimonialApproval(testimo.id)"
+                style="
+                  background: var(--primary);
+                  color: white;
+                  border: none;
+                  padding: 0.5rem 1rem;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  font-size: 0.9em;
+                "
+              >
+                {{ testimo.approved ? 'Ocultar de la web' : 'Aprobar y Mostrar' }}
+              </button>
+              <button
+                (click)="deleteTestimonial(testimo.id)"
+                style="
+                  background: #e53935;
+                  color: white;
+                  border: none;
+                  padding: 0.5rem 1rem;
+                  border-radius: 4px;
+                  cursor: pointer;
+                  font-size: 0.9em;
+                "
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
   </div>
 }

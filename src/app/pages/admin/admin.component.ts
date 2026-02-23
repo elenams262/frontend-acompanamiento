@@ -3,6 +3,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BlogService } from '../../services/blog.service';
 import { ContactService } from '../../services/contact.service';
+import { TestimonialService } from '../../services/testimonial.service';
 
 @Component({
   selector: 'app-admin',
@@ -14,6 +15,7 @@ import { ContactService } from '../../services/contact.service';
 export class AdminComponent {
   blogService = inject(BlogService);
   contactService = inject(ContactService);
+  testimonialService = inject(TestimonialService);
 
   isLoggedIn = false;
   loginData = {
@@ -23,10 +25,36 @@ export class AdminComponent {
 
   isSubmitting = false;
 
+  testimonials: any[] = [];
+
   constructor() {
     // Check if user was already logged in during this session
     if (sessionStorage.getItem('isAdminLoggedIn') === 'true') {
       this.isLoggedIn = true;
+      this.loadTestimonials();
+    }
+  }
+
+  loadTestimonials() {
+    this.testimonialService.getAllTestimonials().subscribe({
+      next: (data) => (this.testimonials = data),
+      error: (err) => console.error('Error loading testimonials', err),
+    });
+  }
+
+  toggleTestimonialApproval(id: string) {
+    this.testimonialService.toggleApproval(id).subscribe({
+      next: () => this.loadTestimonials(),
+      error: (err) => console.error('Error toggling approval', err),
+    });
+  }
+
+  deleteTestimonial(id: string) {
+    if (confirm('¿Seguro que quieres borrar esta reseña de forma permanente?')) {
+      this.testimonialService.deleteTestimonial(id).subscribe({
+        next: () => this.loadTestimonials(),
+        error: (err) => console.error('Error deleting testimonial', err),
+      });
     }
   }
 

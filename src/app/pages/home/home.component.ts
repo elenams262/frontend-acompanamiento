@@ -1,17 +1,24 @@
-import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Testimonial, TestimonialService } from '../../services/testimonial.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit, OnDestroy {
   currentSlide = signal(0);
   private intervalId: any;
+  testimonialService = inject(TestimonialService);
+
+  newTestimonial = { name: '', text: '' };
+  isSubmitting = false;
+  submitMessage = '';
 
   services = [
     {
@@ -89,6 +96,47 @@ export class HomeComponent implements OnInit, OnDestroy {
   ];
   ngOnInit() {
     this.startRotation();
+    this.loadApprovedTestimonials();
+  }
+
+  loadApprovedTestimonials() {
+    this.testimonialService.getApprovedTestimonials().subscribe({
+      next: (data) => {
+        // Merge hardcoded with database testimonials
+        const dbTestimonials = data.map((t) => ({
+          name: t.name,
+          text: t.text,
+        }));
+        this.testimonials = [...this.testimonials, ...dbTestimonials];
+      },
+      error: (err) => {
+        console.error('Error loading testimonials', err);
+      },
+    });
+  }
+
+  submitTestimonial() {
+    if (!this.newTestimonial.name || !this.newTestimonial.text) {
+      this.submitMessage = 'Por favor, rellena todos los campos.';
+      return;
+    }
+
+    this.isSubmitting = true;
+    this.submitMessage = '';
+
+    this.testimonialService.createTestimonial(this.newTestimonial).subscribe({
+      next: () => {
+        this.submitMessage =
+          '¡Gracias por compartir tu experiencia! Tu reseña está pendiente de aprobación.';
+        this.newTestimonial = { name: '', text: '' };
+        this.isSubmitting = false;
+      },
+      error: () => {
+        this.submitMessage =
+          'Hubo un error al enviar la reseña. Por favor, inténtalo de nuevo más tarde.';
+        this.isSubmitting = false;
+      },
+    });
   }
 
   ngOnDestroy() {
