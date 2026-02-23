@@ -29,6 +29,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       link: '/servicios',
     },
     {
+      title: 'Salus Mayores',
+      description:
+        'Servicio acreditado por la CAM para el cuidado en domicilio. Asistencia personal de calidad, nocturna y especialistas en cuidados físicos y emocionales.',
+      image: 'assets/salus-mayores.jpg',
+      link: '/servicios',
+    },
+    {
       title: 'Acompañamiento Profesional Hospitalario',
       description:
         'Asistencia especializada y compañía constante para tus seres queridos durante sus estancias hospitalarias, garantizando su bienestar y tu tranquilidad.',
