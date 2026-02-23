@@ -54,7 +54,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       title: 'Acompañamiento Urgente',
       description:
         'Respuesta rápida y flexible ante imprevistos. Estamos disponibles cuando surge una necesidad inesperada de cuidado y atención.',
-      image: 'assets/acompanamiento-urgente.png',
+      image: 'assets/acompanamiento-urgente.jpeg',
       link: '/contacto',
     },
     {
