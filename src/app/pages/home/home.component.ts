@@ -50,6 +50,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       image: 'assets/ocio-saludable.jpg',
       link: '/servicios',
     },
+    {
+      title: 'Salus Bebés',
+      description:
+        'Una Salus es una profesional especializada en el cuidado de recién nacidos y en el apoyo a las familias. Servicio nocturno, asesoramiento de lactancia y más.',
+      image: 'assets/salus-bebe.jpg',
+      link: '/servicios',
+    },
   ];
 
   testimonials = [
