@@ -22,6 +22,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   services = [
     {
+      title: 'Salus Bebés',
+      description:
+        'Una Salus es una profesional especializada en el cuidado de recién nacidos y en el apoyo a las familias. Servicio nocturno, asesoramiento de lactancia y más.',
+      image: 'assets/salus-bebe.jpg',
+      link: '/servicios',
+    },
+    {
       title: 'Acompañamiento Profesional Hospitalario',
       description:
         'Asistencia especializada y compañía constante para tus seres queridos durante sus estancias hospitalarias, garantizando su bienestar y tu tranquilidad.',
@@ -48,13 +55,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       description:
         'Promovemos el bienestar emocional a través de paseos, actividades culturales y sociales adaptadas, evitando el aislamiento.',
       image: 'assets/ocio-saludable.jpg',
-      link: '/servicios',
-    },
-    {
-      title: 'Salus Bebés',
-      description:
-        'Una Salus es una profesional especializada en el cuidado de recién nacidos y en el apoyo a las familias. Servicio nocturno, asesoramiento de lactancia y más.',
-      image: 'assets/salus-bebe.jpg',
       link: '/servicios',
     },
   ];
