@@ -1,0 +1,146 @@
+.cookie-banner-overlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /* padding so it doesnt touch edges on very large screens */
+  padding: 1rem;
+}
+
+.cookie-banner-container {
+  background: white;
+  width: 100%;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+  padding: 1.5rem 2rem;
+  font-family: var(--font-body);
+
+  h3 {
+    margin-top: 0;
+    color: var(--primary);
+    font-family: var(--font-heading);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+  }
+
+  p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: underline;
+  }
+}
+
+.cookie-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+
+  @media(max-width: 600px) {
+    flex-direction: column;
+    width: 100%;
+    
+    .btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+.btn-accept {
+  background: var(--primary);
+  color: white;
+  border: 1px solid var(--primary);
+  
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+.btn-reject {
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+
+  &:hover {
+    background: rgba(0,0,0,0.05);
+  }
+}
+
+.btn-config {
+  background: transparent;
+  color: #666;
+  text-decoration: underline;
+
+  &:hover {
+    color: #333;
+  }
+}
+
+.cookie-config {
+  /* Scrollable if too big on small screens */
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.cookie-option {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border: 1px solid #eee;
+
+  .option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+
+    input[type="checkbox"] {
+      cursor: pointer;
+      width: 1.1rem;
+      height: 1.1rem;
+    }
+  }
+
+  .option-desc {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0;
+  }
+}
+
+.config-actions {
+  justify-content: space-between;
+  margin-top: 1.5rem;
+
+  @media(max-width: 600px) {
+    flex-direction: column-reverse;
+  }
+}

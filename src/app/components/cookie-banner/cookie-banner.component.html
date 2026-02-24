@@ -1,0 +1,73 @@
+<div class="cookie-banner-overlay" *ngIf="isVisible">
+  <div class="cookie-banner-container">
+    <!-- Vista Principal -->
+    <div class="cookie-content" *ngIf="!showConfig">
+      <h3>Valoramos tu privacidad</h3>
+      <p>
+        Utilizamos cookies estrictamente necesarias para el correcto funcionamiento técnico de la
+        web. Puede aceptar, rechazar o configurar qué cookies quiere permitir en caso de que en un
+        futuro integremos servicios adicionales. Para más información, consulte nuestra
+        <a href="/politica-cookies">Política de Cookies</a>.
+      </p>
+      <div class="cookie-actions">
+        <button class="btn btn-config" (click)="toggleConfig()">Configurar</button>
+        <button class="btn btn-reject" (click)="rejectAll()">Rechazar</button>
+        <button class="btn btn-accept" (click)="acceptAll()">Aceptar Todo</button>
+      </div>
+    </div>
+
+    <!-- Vista de Configuración -->
+    <div class="cookie-config" *ngIf="showConfig">
+      <h3>Configuración de Cookies</h3>
+      <p>Seleccione las cookies que desea aceptar.</p>
+
+      <div class="cookie-option">
+        <div class="option-header">
+          <label>Cookies Técnicas (Obligatorias)</label>
+          <input type="checkbox" checked disabled />
+        </div>
+        <p class="option-desc">
+          Estrictamente necesarias para el correcto funcionamiento del sitio web (navegación,
+          seguridad). No se pueden desactivar.
+        </p>
+      </div>
+
+      <div class="cookie-option">
+        <div class="option-header">
+          <label>Cookies Analíticas</label>
+          <input
+            type="checkbox"
+            [checked]="preferences.analytics"
+            (change)="preferences.analytics = !preferences.analytics"
+          />
+        </div>
+        <p class="option-desc">
+          Permiten medir el uso que se hace de la página para mejorar el servicio. En el momento
+          actual, no tenemos instaladas este tipo de cookies en la red, pero al aceptarlo
+          habilitaría su uso a futuro si fueran necesarias.
+        </p>
+      </div>
+
+      <div class="cookie-option">
+        <div class="option-header">
+          <label>Cookies de Publicidad</label>
+          <input
+            type="checkbox"
+            [checked]="preferences.marketing"
+            (change)="preferences.marketing = !preferences.marketing"
+          />
+        </div>
+        <p class="option-desc">
+          Permiten personalizar la publicidad y realizar campañas a medida. En el momento actual, no
+          tenemos instaladas este tipo de cookies en la red, pero al aceptarlo habilitaría su uso a
+          futuro si fueran necesarias.
+        </p>
+      </div>
+
+      <div class="cookie-actions config-actions">
+        <button class="btn btn-config" (click)="toggleConfig()">Volver</button>
+        <button class="btn btn-accept" (click)="saveConfig()">Guardar Preferencias</button>
+      </div>
+    </div>
+  </div>
+</div>
