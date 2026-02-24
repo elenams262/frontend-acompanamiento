@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -50,5 +50,16 @@ export class CookieBannerComponent implements OnInit {
     localStorage.setItem('cookieConsent', status);
     localStorage.setItem('cookiePreferences', JSON.stringify(this.preferences));
     this.isVisible = false;
+  }
+
+  @HostListener('window:openCookieSettings')
+  onOpenCookieSettings() {
+    // Si ya tenían preferencias guardadas, las cargamos para que vean qué marcaron
+    const savedPrefs = localStorage.getItem('cookiePreferences');
+    if (savedPrefs) {
+      this.preferences = JSON.parse(savedPrefs);
+    }
+    this.isVisible = true;
+    this.showConfig = true;
   }
 }
