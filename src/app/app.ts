@@ -10,5 +10,5 @@ import { FooterComponent } from './components/footer/footer.component';
   styleUrl: './app.component.scss',
 })
 export class App {
-  protected readonly title = signal('web-app');
+  protected readonly title = signal('Acompañamiento Sociosanitario');
 }
