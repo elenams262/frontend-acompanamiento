@@ -1,0 +1,26 @@
+.cheque-content-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 4rem;
+  box-shadow: var(--shadow-md);
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+}
+
+.cheque-grade-box {
+  background: rgba(119, 150, 205, 0.1);
+  padding: 1.8rem;
+  border-radius: 8px;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+}
