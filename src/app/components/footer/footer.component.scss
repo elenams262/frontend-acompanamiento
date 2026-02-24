@@ -112,7 +112,21 @@
   .footer-copyright {
     margin-top: 1rem;
     font-size: 0.85rem;
-    opacity: 0.6;
+    opacity: 0.8;
     text-align: center;
+    
+    .developer-credit {
+      margin-top: 0.5rem;
+      
+      a {
+        color: var(--white);
+        text-decoration: underline;
+        font-weight: 500;
+        
+        &:hover {
+          color: var(--accent);
+        }
+      }
+    }
   }
 }
