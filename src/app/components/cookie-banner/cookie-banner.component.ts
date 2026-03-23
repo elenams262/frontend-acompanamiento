@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,14 +10,6 @@ import { CommonModule } from '@angular/common';
 })
 export class CookieBannerComponent implements OnInit {
   isVisible = false;
-  showConfig = false;
-
-  // Solo hay 1 tipo de cookie por defecto (técnica), pero por si alguna vez añadimos otras,
-  // dejamos el molde preparado.
-  preferences = {
-    analytics: false,
-    marketing: false,
-  };
 
   ngOnInit() {
     const consent = localStorage.getItem('cookieConsent');
@@ -26,40 +18,8 @@ export class CookieBannerComponent implements OnInit {
     }
   }
 
-  acceptAll() {
-    this.preferences.analytics = true;
-    this.preferences.marketing = true;
-    this.saveToStorage('accepted');
-  }
-
-  rejectAll() {
-    this.preferences.analytics = false;
-    this.preferences.marketing = false;
-    this.saveToStorage('rejected');
-  }
-
-  saveConfig() {
-    this.saveToStorage('configured');
-  }
-
-  toggleConfig() {
-    this.showConfig = !this.showConfig;
-  }
-
-  private saveToStorage(status: string) {
-    localStorage.setItem('cookieConsent', status);
-    localStorage.setItem('cookiePreferences', JSON.stringify(this.preferences));
+  accept() {
+    localStorage.setItem('cookieConsent', 'accepted');
     this.isVisible = false;
-  }
-
-  @HostListener('window:openCookieSettings')
-  onOpenCookieSettings() {
-    // Si ya tenían preferencias guardadas, las cargamos para que vean qué marcaron
-    const savedPrefs = localStorage.getItem('cookiePreferences');
-    if (savedPrefs) {
-      this.preferences = JSON.parse(savedPrefs);
-    }
-    this.isVisible = true;
-    this.showConfig = true;
   }
 }

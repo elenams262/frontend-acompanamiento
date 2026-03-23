@@ -9,7 +9,4 @@ import { RouterLink } from '@angular/router';
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
-  openCookieSettings() {
-    window.dispatchEvent(new CustomEvent('openCookieSettings'));
-  }
 }
