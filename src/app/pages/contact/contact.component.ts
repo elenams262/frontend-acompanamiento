@@ -21,6 +21,7 @@ export class ContactComponent {
     subject: '',
     message: '',
     privacyPolicy: false,
+    commercial: false,
   };
 
   isSubmitting = false;
@@ -36,16 +37,27 @@ export class ContactComponent {
     this.submitSuccess = false;
     this.submitError = false;
 
-    this.contactService.addContact(this.formData).subscribe({
+    const consentText = this.formData.commercial 
+      ? '[Consentimiento comercial: SÍ - Desea recibir comunicaciones comerciales]' 
+      : '[Consentimiento comercial: NO - Solo acepta la política de privacidad para la consulta]';
+      
+    const finalMessage = `${this.formData.message}\n\n${consentText}`;
+
+    const dataToSend = {
+      ...this.formData,
+      message: finalMessage
+    };
+
+    this.contactService.addContact(dataToSend).subscribe({
       next: (response) => {
         // Now try to send email using EmailJS from the frontend browser
         try {
           const templateParams = {
-            subject: this.formData.subject,
-            name: this.formData.name,
-            email: this.formData.email,
-            phone: this.formData.phone,
-            message: this.formData.message,
+            subject: dataToSend.subject,
+            name: dataToSend.name,
+            email: dataToSend.email,
+            phone: dataToSend.phone,
+            message: dataToSend.message,
           };
 
           emailjs
@@ -83,6 +95,7 @@ export class ContactComponent {
     this.submitSuccess = true;
     form.resetForm();
     this.formData.privacyPolicy = false;
+    this.formData.commercial = false;
 
     // Hide success message after 5 seconds
     setTimeout(() => {
