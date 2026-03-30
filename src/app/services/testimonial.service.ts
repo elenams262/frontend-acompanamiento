@@ -14,7 +14,7 @@ export interface Testimonial {
   providedIn: 'root',
 })
 export class TestimonialService {
-  private apiUrl = `https://backend-acompanamiento.onrender.com/api/testimonials`;
+  private apiUrl = `https://backend-acompanamiento-nsg3.onrender.com/api/testimonials`;
 
   constructor(private http: HttpClient) {}
 

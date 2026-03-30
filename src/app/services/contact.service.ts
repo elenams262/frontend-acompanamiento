@@ -15,7 +15,7 @@ export interface Contact {
   providedIn: 'root',
 })
 export class ContactService {
-  private apiUrl = 'https://backend-acompanamiento.onrender.com/api/contact';
+  private apiUrl = 'https://backend-acompanamiento-nsg3.onrender.com/api/contact';
 
   contacts = signal<Contact[]>([]);
   private http = inject(HttpClient);
@@ -37,7 +37,7 @@ export class ContactService {
 
   getConfig() {
     return this.http.get<{ accessKey: string }>(
-      'https://backend-acompanamiento.onrender.com/api/config/web3forms',
+      'https://backend-acompanamiento-nsg3.onrender.com/api/config/web3forms',
     );
   }
 

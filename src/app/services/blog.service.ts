@@ -6,8 +6,8 @@ import { tap } from 'rxjs';
   providedIn: 'root',
 })
 export class BlogService {
-  private apiUrl = 'https://backend-acompanamiento.onrender.com/api/posts';
-  private baseUrl = 'https://backend-acompanamiento.onrender.com';
+  private apiUrl = 'https://backend-acompanamiento-nsg3.onrender.com/api/posts';
+  private baseUrl = 'https://backend-acompanamiento-nsg3.onrender.com';
 
   posts = signal<Post[]>([]);
   private http = inject(HttpClient);
